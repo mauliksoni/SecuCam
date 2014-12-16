@@ -11,8 +11,8 @@ import requests
 
 prior_image = None
 url = \
-    'https://api-m2x.att.com/v1/feeds/8170fd41e419865f2304a19098601ab0/streams/motion/value'
-headers = {'Content-Type':'application/json','X-M2X-KEY': '96e4676067a781b658427c67b3c85c36'}
+    'https://api-m2x.att.com/v1/feeds/key/streams/motion/value'
+headers = {'Content-Type':'application/json','X-M2X-KEY': 'key'}
 
 
 def postAtt(val):
