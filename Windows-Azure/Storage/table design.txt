@@ -1,0 +1,28 @@
+sql azure
+	id pk
+	username
+	password
+	email
+	lastlogindate
+	lastloginip
+	enabled
+
+sql table
+	monitoring
+		partitionkey -> year-month-week
+		row key -> long current timestamp
+		macaddress
+		device id
+		device description ( like 1084 front door, 1084 backdoor
+		username
+		email
+		blob id or video id or image id ( this is a guid)
+		timestamp
+
+sql blob storage
+		container
+			images
+			video
+				guid 1
+				guid 2
+				guid 3
