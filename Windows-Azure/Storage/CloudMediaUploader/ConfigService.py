@@ -9,10 +9,15 @@ class ConfigService(object):
     """
     def __init__(self):
         self.Email = ""
-        self.MacAddress = ""
         self.AccountName = ""
         self.AccountKey = ""
         self.StorageType = ""
+        self.DeviceId = ""
+        self.DeviceDescription = ""
+        self.UserName = ""
+        self.Email = ""
+        self.MacAddress = ""
+
     def byteify(self, input):
         if isinstance(input, dict):
             return {self.byteify(key):self.byteify(value) for key,value in input.iteritems()}
@@ -32,12 +37,14 @@ class ConfigService(object):
 
         json_data = self.byteify(json_data)
 
-
         self.Email = json_data["email"]
         self.AccountName = json_data["accountname"]
         self.AccountKey = json_data["accountkey"]
         self.StorageType = json_data["storagetype"]
-
+        self.DeviceId = json_data["deviceid"]
+        self.DeviceDescription = json_data["devicedescription"]
+        self.UserName = json_data["username"]
+        self.Email = json_data["email"]
         self.MacAddress = self.getMacAddress()
 
     def getMacAddress(self):
