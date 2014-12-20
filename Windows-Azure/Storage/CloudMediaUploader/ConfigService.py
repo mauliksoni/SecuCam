@@ -32,8 +32,6 @@ class ConfigService(object):
     def loadConfig(self):
         with open("settings.json") as json_file:
             json_data = json.load(json_file)
-        print(json_data)
-
         json_file.close()
 
         json_data = self.byteify(json_data)

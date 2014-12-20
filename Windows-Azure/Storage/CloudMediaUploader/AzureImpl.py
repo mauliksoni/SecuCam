@@ -6,7 +6,7 @@ from azure.storage import BlobService
 import uuid
 
 class AzureImpl(object):
-    def __init__(self,config):
+    def __init__(self, config):
         self.AccountName = config.AccountName
         self.AccountKey = config.AccountKey
         self.deviceId = config.DeviceId
@@ -14,7 +14,6 @@ class AzureImpl(object):
         self.macAddress = config.MacAddress
         self.username = config.UserName
         self.email = config.Email
-        #self.tableService = TableService("kkpicam", "R2K8UWnE9mWqnWIScuLHMNaXQR1W7KUE9bTDxIza/X94K+x2+EtouAVE9V8BmUaaK3HQQMZLY5MGcvkzuMTmCA==")
         self.tableService = TableService(self.AccountName, self.AccountKey)
         self.tableService.create_table('monitoring')
 
