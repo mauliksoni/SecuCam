@@ -6,9 +6,9 @@ from azure.storage import BlobService
 import uuid
 
 class AzureImpl(object):
-    def __init__(self, accountName, accountKey, config):
-        self.AccountName = accountName
-        self.AccountKey = accountKey
+    def __init__(self,config):
+        self.AccountName = config.AccountName
+        self.AccountKey = config.AccountKey
         self.deviceId = config.DeviceId
         self.deviceDescription = config.DeviceDescription
         self.macAddress = config.MacAddress
@@ -34,7 +34,7 @@ class AzureImpl(object):
         blobId = "{0}".format(uuid.uuid1())
 
         # first insert the blob
-        self.blob_service.put_block_blob_from_path('videos', '{0}.mp4'.format(blobId), mediaPath)
+        self.blob_service.put_block_blob_from_path('videos', '{0}.h264'.format(blobId), mediaPath)
 
         # now insert the monitoring data
         self.tableService.insert_entity(
