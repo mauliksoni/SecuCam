@@ -17,7 +17,6 @@ class ConfigService(object):
         self.UserName = ""
         self.Email = ""
         self.MacAddress = ""
-        self.GeneratedFilesPath = ""
 
     def byteify(self, input):
         if isinstance(input, dict):
@@ -32,20 +31,21 @@ class ConfigService(object):
     def loadConfig(self):
         with open("settings.json") as json_file:
             json_data = json.load(json_file)
+        print(json_data)
+
         json_file.close()
 
         json_data = self.byteify(json_data)
 
         self.Email = json_data["email"]
-        self.AccountName = json_data["accountName"]
-        self.AccountKey = json_data["accountKey"]
-        self.StorageType = json_data["storageType"]
-        self.DeviceId = json_data["deviceId"]
-        self.DeviceDescription = json_data["deviceDescription"]
-        self.UserName = json_data["userName"]
-        self.GeneratedFilesPath = json_data["generatedFilesPath"]
+        self.AccountName = json_data["accountname"]
+        self.AccountKey = json_data["accountkey"]
+        self.StorageType = json_data["storagetype"]
+        self.DeviceId = json_data["deviceid"]
+        self.DeviceDescription = json_data["devicedescription"]
+        self.UserName = json_data["username"]
+        self.Email = json_data["email"]
         self.MacAddress = self.getMacAddress()
-
 
     def getMacAddress(self):
         return get_mac()

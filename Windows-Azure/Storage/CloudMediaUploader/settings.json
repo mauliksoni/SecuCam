@@ -1,10 +1,11 @@
 {
-    "storageType": "azure",
-    "email":"kedarkarthik@gmail.com",
-    "accountName":"kkpicam",
-    "accountKey":"",
-    "deviceId":"1",
-    "deviceDescription":"1084 leisure ln front door",
-    "userName":"kedarkarthik",
-    "generatedFilesPath":"/home/pi/Desktop/dev/tmp/data"
+    "storagetype": "azure",
+    "email":"soni.maulik@gmail.com",
+    "accountname":"sccam",
+    "accountkey":"4hWPK06luP66VPaUn2jwdL8wCQ1o+82fydPGxsqSi5dEiNd9bfG1MqEWAk57p7QMc/6HDfMUAWwx2oIjLSX9bw==",
+    "deviceid":"1",
+    "devicedescription":"front door",
+    "username":"mauliksoni",
+    "email":"soni.maulik@gmail.com",
+    "generatedFilesPath":"/home/pi/PiCam/upload"
 }
