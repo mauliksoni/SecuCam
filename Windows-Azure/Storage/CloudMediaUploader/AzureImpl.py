@@ -1,9 +1,16 @@
 __author__ = 'Kedar Subramanya'
+__author__ = 'Maulik Soni'
 import time
 from datetime import datetime
 from azure.storage import TableService
 from azure.storage import BlobService
 import uuid
+import requests
+import traceback
+import json
+
+url = 'https://sccam.azure-mobile.net/tables/TodoItem'
+headers = {'Content-Type':'application/json','X-ZUMO-APPLICATION': ''}
 
 class AzureImpl(object):
     def __init__(self, config):
@@ -32,26 +39,20 @@ class AzureImpl(object):
         rowKey = "{0}".format(uuid.uuid1())
         blobId = "{0}".format(uuid.uuid1())
 
-        # first insert the blob
-        self.blob_service.put_block_blob_from_path('videos', '{0}.h264'.format(blobId), mediaPath)
-
-        # now insert the monitoring data
-        self.tableService.insert_entity(
-         'monitoring',
-         {
-            'PartitionKey' : partitionKey,
-            'RowKey': rowKey,
-            "macAddress":self.macAddress,
-            "deviceid":self.deviceId,
-            "devicedescriptoin":self.deviceDescription,
-            "username":self.username,
-            "blobid":blobId,
-            "mediatype": mediaType,
-            "timestamp":currentDateTime,
-        }
-    )
-
-
-
-
-
+        # first insert
+        # now insert the monitoring data to azure mobile services table
+        p='https://sccam.blob.core.windows.net/videos/' + blobId + '.mp4'
+        print p
+        print url
+        payload = {'text': str(p),'complete': False }
+        try:
+            r = requests.post(url, data=json.dumps(payload), headers=headers)
+            print r.text
+            #print 'post'
+        except Exception:
+            print ('Error posting data')
+            #print traceback.format_exc()
+            pass
+        
+    #self.blob_service.set_blob_properties('videos','{0}.mp4',)
+        self.blob_service.put_block_blob_from_path('videos', '{0}.mp4'.format(blobId), mediaPath,x_ms_blob_content_type='video/mp4')
