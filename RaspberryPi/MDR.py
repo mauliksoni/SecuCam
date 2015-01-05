@@ -92,25 +92,21 @@ def write_video(stream):
 
 
 with picamera.PiCamera() as camera:
-    camera.resolution = (720, 480)
+    camera.resolution = (1296, 730)
+    # annotation 
     camera.annotate_frame_num = True
     camera.annotate_background = True
-    camera.annotate_text = str(datetime.datetime.now())
-
-    # camera.awb_mode='off'
-    camera.framerate=15
-    #camera.exposure_mode = 'off'
-    #g = camera.awb_gains
-    #camera.awb_gains = g
-
-    stream = picamera.PiCameraCircularIO(camera, seconds=5)
+    camera.framerate=24
+    stream = picamera.PiCameraCircularIO(camera, seconds=10)
     camera.start_recording(stream, format='h264')
     try:
         while True:
-            camera.wait_recording(2)
+            camera.wait_recording(1)
             if detect_motion(camera):
                 print 'Motion detected!'
 
+                #annotation was stale so moved here 
+                camera.annotate_text = str(datetime.datetime.now())
                 # As soon as we detect motion, split the recording to
                 # record the frames "after" motion
 
@@ -124,7 +120,7 @@ with picamera.PiCamera() as camera:
                 # recording back to the in-memory circular buffer
 
                 while detect_motion(camera):
-                    camera.wait_recording(1)
+                    camera.wait_recording(5)
                 print 'Motion stopped!'
                 camera.split_recording(stream)
     finally:
