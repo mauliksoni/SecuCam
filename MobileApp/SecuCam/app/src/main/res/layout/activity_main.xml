@@ -49,8 +49,6 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/add_textbox_hint" >
-
-                <requestFocus />
             </EditText>
 
             <Button
@@ -59,6 +57,12 @@
                 android:layout_height="wrap_content"
                 android:onClick="addItem"
                 android:text="@string/add_button_text" />
+            <Button
+                android:id="@+id/buttonRefresh"
+                android:layout_width="34dip"
+                android:layout_height="wrap_content"
+                android:onClick="RefreshData"
+                android:text="Re" />
 
         </LinearLayout>
 

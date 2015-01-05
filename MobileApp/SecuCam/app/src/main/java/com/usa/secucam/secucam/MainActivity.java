@@ -216,6 +216,9 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
+    public void RefreshData(View view){
+        refreshItemsFromTable();
+    }
     /**
      * Add a new item
      *
