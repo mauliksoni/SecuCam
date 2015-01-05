@@ -14,6 +14,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+        <Button
+            android:id="@+id/buttonRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="RefreshData"
+            android:text="Refresh Data"
+            android:layout_gravity="right" />
+        <ProgressBar
+            android:id="@+id/loadingProgressBar"
+            android:layout_width="28dp"
+            android:layout_height="28dp" />
+
+        <ListView
+            android:id="@+id/listViewToDo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/row_list_to_do"
+            android:padding="6dip" >
+        <requestFocus/>
+        </ListView>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,10 +50,7 @@
                 android:text="@string/mobile_services"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
-            <ProgressBar
-                android:id="@+id/loadingProgressBar"
-                android:layout_width="28dp"
-                android:layout_height="28dp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -57,23 +74,11 @@
                 android:layout_height="wrap_content"
                 android:onClick="addItem"
                 android:text="@string/add_button_text" />
-            <Button
-                android:id="@+id/buttonRefresh"
-                android:layout_width="34dip"
-                android:layout_height="wrap_content"
-                android:onClick="RefreshData"
-                android:text="Re" />
+
 
         </LinearLayout>
 
-        <ListView
-            android:id="@+id/listViewToDo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@layout/row_list_to_do"
-            android:padding="6dip" >
 
-        </ListView>
 
     </LinearLayout>
 </RelativeLayout>
