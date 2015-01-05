@@ -23,6 +23,8 @@ public class ToDoItem {
 	@com.google.gson.annotations.SerializedName("complete")
 	private boolean mComplete;
 
+    @com.google.gson.annotations.SerializedName("__createdAt")
+    private String mCreatedAt;
 	/**
 	 * ToDoItem constructor
 	 */
@@ -88,6 +90,8 @@ public class ToDoItem {
 	public boolean isComplete() {
 		return mComplete;
 	}
+
+    public String GetTs(){ return mCreatedAt;}
 
 	/**
 	 * Marks the item as completed or incompleted

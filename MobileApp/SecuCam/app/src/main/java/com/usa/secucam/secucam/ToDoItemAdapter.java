@@ -9,6 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
  * Adapter to bind a ToDoItem List to a view
  */
@@ -61,9 +67,26 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
             }
         });
 
+        DateFormat utcdf = new SimpleDateFormat("yy-MM-dd'T'HH:mm:ss.SSS");
+        DateFormat dallasdf=new SimpleDateFormat("yy-MM-dd HH:mm");
+
+        TimeZone utctz=TimeZone.getTimeZone("UTC");
+        TimeZone dallastz = TimeZone.getTimeZone("America/Chicago");
+
+        String dallasDate="";
+
+        utcdf.setTimeZone(utctz);
+        dallasdf.setTimeZone(dallastz);
+
+        try {
+            Date myDate = utcdf.parse(currentItem.GetTs());
+            dallasDate = dallasdf.format(myDate).toString();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
 
-		checkBox.setText("a");
+        checkBox.setText(dallasDate);
 		checkBox.setChecked(false);
 		checkBox.setEnabled(true);
 
